@@ -1,0 +1,120 @@
+﻿@model IEnumerable<DAPM.Models.TbChitietMucDoThietHai>
+
+@{
+    Layout = null;
+    ViewData["Title"] = "Quản lý đợt lũ";
+}
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý đợt lũ</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="logo">
+                <img src="/img/logo.png" alt="Logo" style="width: 80px;">
+                <span>HUYỆN HOA VÀNG</span>
+            </div>
+            <ul class="menu">
+                <li><a href="#"><img src="/img/home.png" alt="Home"> Tổng quan</a></li>
+                <li><a href="#"><img src="/img/danhmuc.png" alt="Category"> Danh mục hàng hóa</a></li>
+                <li><a href="#" class="active"><img src="/img/dotlu.png" alt="Flood"> Quản lý đợt lũ</a></li>
+                <li class="dropdown">
+                    <a href="#">
+                        <img src="/img/thiethai.png" alt="Damage">
+                        <span>Quản lý thiệt hại</span>
+                        <span><i class="fa-solid fa-angle-down angle"></i></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Danh mục thiệt hại</a></li>
+                        <li><a href="#">Chi tiết thiệt hại</a></li>
+                    </ul>
+                </li>
+                <li><a href="#"><img src="/img/ungho.png" alt="Support"> Quản lý ủng hộ</a></li>
+                <li><a href="#"><img src="/img/cuutro.png" alt="Rescue"> Quản lý cứu trợ</a></li>
+                <li><a href="#"><img src="/img/taikhoan.png" alt="Account"> Quản lý tài khoản</a></li>
+                <li><a href="#"><img src="/img/thongke.png" alt="Report"> Thống kê & báo cáo</a></li>
+            </ul>
+
+        </div>
+        <div class="content">
+            <div class="header">
+                <div class="header-title">
+                    <h2>Quản lý đợt lũ</h2>
+                </div>
+                <div class="search-bar">
+                    <input type="text" placeholder="Search">
+                    <img src="/img/search.png" alt="Search" style="width: 15px;">
+                </div>
+                <div class="user-info">
+                    <div class="user-section">
+                        <img src="/img/user.png" alt="User" style="width: 24px;">
+                        <span>Admin</span>
+                    </div>
+                    <div class="notification-section">
+                        <img src="/img/notifi.png" alt="Notifications" style="width: 24px;">
+                        <span class="notification-badge">1</span>
+                        <!-- <div class="notification-badge"></div>  -->
+                    </div>
+                    <div class="settings-section">
+                        <img src="/img/setting.png" alt="Settings" style="width: 24px;">
+                    </div>
+                </div>
+            </div>
+            <div class="table-header">
+                <h1>DANH SÁCH ĐỢT LŨ</h1>
+                <button class="btn-add">Thêm</button>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tên đăng nhập</th>
+                        <th>Tên đợt lũ</th>
+                        <th>Mức thiệt hại</th>
+                        <th>Mô tả</th>
+                        <th>Hành động</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.IdTaiKhoanNavigation.TenDangNhap</td>
+                            <td>@item.IdDotLuNavigation.TenDotLu</td>
+                            <td>@item.IdMucDoNavigation.MucThietHai</td>
+                            <td>@item.Mota</td>
+                            <td>
+                                <a>Edit</a>
+                                <a>Delete</a>
+                            </td>
+                        </tr>
+                    }
+                    <!-- More rows here -->
+                </tbody>
+            </table>
+            <div class="pagination">
+                <button>❮</button>
+                <button>1</button>
+                <button>❯</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    const dropDown = document.querySelector(".dropdown a")
+    const dropDownMenu = document.querySelector(".dropdown .dropdown-menu")
+    const iconAngle = document.querySelector(".dropdown .angle")
+
+    dropDown.addEventListener("click", () => {
+        dropDownMenu.classList.toggle("active")
+        iconAngle.classList.toggle("active")
+    })
+</script>
